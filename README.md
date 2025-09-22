@@ -14,11 +14,6 @@ Create a `.env` file:
 
 ```env
 PORT=3000
-SMTP_HOST=smtp.gmail.com
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-password
-TWILIO_ACCOUNT_SID=your-sid
-TWILIO_AUTH_TOKEN=your-token
 ```
 
 ## Run
@@ -31,23 +26,24 @@ yarn start:dev
 yarn start:prod
 ```
 
+## Run with Docker
+
+```bash
+# Build and run
+docker-compose up --build
+
+# Run in background
+docker-compose up -d
+
+# Stop
+docker-compose down
+```
+
 ## API
 
-### Send Email
+### Health Check
 ```
-POST /notifications/email
-{
-  "to": "user@example.com",
-  "subject": "Hello",
-  "body": "Message"
-}
+GET /health
 ```
 
-### Send SMS
-```
-POST /notifications/sms
-{
-  "to": "+1234567890",
-  "message": "Hello"
-}
-```
+Returns service status and basic information.
